@@ -2,15 +2,17 @@
 
   require 'database.php';
  
-  $id_product0 = $_POST['id_producto'];
+  
+  $id_producto = $_GET['id_producto'];
   $id_categoria = $_POST['id_categoria'];
   $nombre_producto = $_POST['nombre_producto'];
   $cantidad_producto= $_POST['cantidad_producto'];
   $precio_producto= $_POST['precio_producto'];
   
- $prod="UPDATE productos SET id_categoria='$id_categoria', nombre_producto='$nombre_producto', cantidad_producto='$cantidad_producto', precio_producto'$precio_producto' WHERE id_producto='$id_producto'";
+ $prod="UPDATE productos SET id_categoria='$id_categoria', nombre_producto='$nombre_producto', cantidad_producto='$cantidad_producto', precio_producto='$precio_producto' WHERE id_producto='$id_producto'";
 
  $pd = $mysqli->query($prod);
+
 
 ?>
 

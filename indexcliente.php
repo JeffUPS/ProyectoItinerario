@@ -73,7 +73,7 @@
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                              <li> <a href="index.php">Inicio</a> </li>
+                              <li> <a href="indexcliente.php">Inicio</a> </li>
                               <li> <a href="#">Quienes Somos</a> </li>
                               <li> <a href="#">Productos</a> </li>	
                            </ul>

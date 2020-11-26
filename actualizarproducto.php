@@ -27,6 +27,7 @@
     $sql="SELECT * FROM categoria";
     $resultado = $mysqli->query($sql); 
     
+    echo $id_producto;
    
 ?>
 <!DOCTYPE html>
@@ -126,7 +127,7 @@
                </div>
             </div> 
             <div class="row">
-                    <form class="main_form" method="post" action="actualizar.php">
+                    <form class="main_form" method="post" action="actualizar.php?id_producto=<?php echo $row['id_producto'];?>">
                         <div class="row">
                             <div class=" col-md-12">
                                 <select name= "id_categoria">

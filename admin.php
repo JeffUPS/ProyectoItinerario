@@ -9,8 +9,7 @@
    
    require 'database.php';
 
-   $sql="SELECT * FROM categoria";
-   $resultado = $mysqli->query($sql); 
+
  
    $prod= "SELECT * FROM productos";
    $pd=$mysqli->query($prod);
