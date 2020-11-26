@@ -83,7 +83,7 @@
                            <ul class="menu-area-main">
                               <li> <a href="admin.php">Inicio</a> </li>
                               <li> <a href="registercategoria.php">Registro Categoria</a> </li>
-                              <li> <a href="registerproduct.php">Registro Productos</a> </li>	
+                              <li class="active"> <a href="registerproduct.php">Registro Productos</a> </li>	
                            </ul>
                         </nav>
                      </div>
@@ -115,13 +115,14 @@
                     <form class="main_form" method="post" action="guardarproducto.php">
                         <div class="row">
                             <div class=" col-md-12">
-                                <select name= "id_categoria">
-             						<option value="Seleccione">Seleccione una Categoria</option>
-             						<?php foreach ($resultado as $opc): ?>
-              						<option value="<?php echo $opc['id_categoria']?>"><?php echo $opc['id_categoria'] ?></option> 
-            						<?php endforeach ?>
-          						</select>
-                            </div>
+                            <select name= "id_categoria">
+             						   <option value="Seleccione">Seleccione una Categoria</option>
+             						      <?php foreach ($resultado as $opc): ?>
+              						   <option value="<?php echo $opc['id_categoria']?>">
+                                   <?php echo $opc['id_categoria'] ?></option> 
+            						      <?php endforeach ?>
+          						      </select>
+                            </div><br>
                             <div class=" col-md-12">
                                 <input class="form-control" type="text" name="nombre_producto" placeholder="Ingresar Nombre del Producto">
                             </div>

@@ -82,7 +82,7 @@
                         <nav class="main-menu">
                            <ul class="menu-area-main">
                               <li> <a href="admin.php">Inicio</a> </li>
-                              <li> <a href="registercategoria.php">Registro Categoria</a> </li>
+                              <li class="active"> <a href="registercategoria.php">Registro Categoria</a> </li>
                               <li> <a href="registerproduct.php">Registro Productos</a> </li>	
                            </ul>
                         </nav>
@@ -114,11 +114,13 @@
             <div class="row">
                     <form class="main_form" method="post" action="guardarcategoria.php">
                         <div class="row">
-                        <div class=" col-md-12">
+                           <div class=" col-md-12">
                                 <input class="form-control" type="text" name="categoria" placeholder="Ingresar su Nueva Categoria">
                             </div>
                             <div class=" col-md-12">
                                 <button type="submit" class="send" >Registrar</button>
+                            </div>
+                            <div class=" col-md-12">
                             </div>
                         </div>
                     </form>

@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>lighten</title>
+      <title>Lacteos "El Misa" | Inicio de Sesion</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -54,9 +54,9 @@
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                              <li class="active"> <a href="index.php">Inicio</a> </li>
-                              <li> <a href="about.php">Quienes Somos</a> </li>
-                              <li> <a href="product.php">Productos</a> </li>
+                              <li> <a href="index.php">Inicio</a> </li>
+                              <li> <a href="#">Quienes Somos</a> </li>
+                              <li> <a href="#">Productos</a> </li>
                                
                            </ul>
                         </nav>
@@ -64,7 +64,7 @@
                   </div>
                </div>
                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-                  <li><a class="buy" href="login.php">Login</a></li>
+                  <li><a class="buy" href="login.php">Inicio de Sesion</a></li>
                </div>
             </div>
          </div>
@@ -100,7 +100,9 @@
                             </div>
                             <div class=" col-md-12">
                                 <button type="submit" class="send" name="login_user">Iniciar Sesion</button>
-                                <a href="registro.php">Registrarse</a>
+                            </div>
+                            <div clas="col-md-12">
+                              <a href="registro.php">Registrarse</a>
                             </div>
                            
                         </div>

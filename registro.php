@@ -55,8 +55,8 @@
                         <nav class="main-menu">
                            <ul class="menu-area-main">
                               <li> <a href="index.php">Inicio</a> </li>
-                              <li> <a href="about.php">Quienes Somos</a> </li>
-                              <li> <a href="product.php">Productos</a> </li>
+                              <li> <a href="#">Quienes Somos</a> </li>
+                              <li> <a href="#">Productos</a> </li>
                                
                            </ul>
                         </nav>
@@ -64,7 +64,7 @@
                   </div>
                </div>
                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-                  <li><a class="buy" href="login.php">Login</a></li>
+                  <li><a class="buy" href="login.php">Inicio de Sesion</a></li>
                </div>
             </div>
          </div>
