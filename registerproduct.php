@@ -119,7 +119,7 @@
              						   <option value="Seleccione">Seleccione una Categoria</option>
              						      <?php foreach ($resultado as $opc): ?>
               						   <option value="<?php echo $opc['id_categoria']?>">
-                                   <?php echo $opc['id_categoria'] ?></option> 
+                                   <?php echo $opc['categoria'] ?></option> 
             						      <?php endforeach ?>
           						      </select>
                             </div><br>

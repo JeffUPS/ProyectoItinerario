@@ -11,7 +11,7 @@
 
 
  
-   $prod= "SELECT * FROM productos";
+   $prod= "SELECT p.id_producto,c.categoria,p.nombre_producto,p.cantidad_producto,p.precio_producto FROM productos p,categoria c WHERE c.id_categoria=p.id_categoria";
    $pd=$mysqli->query($prod);
 ?>
 <!DOCTYPE html>
@@ -128,7 +128,7 @@
                            MYSQLI_ASSOC))  { ?>
                            <tr>
                            <td><?php echo $row['id_producto']; ?></td>
-                           <td><?php echo $row['id_categoria']; ?></td>
+                           <td><?php echo $row['categoria']; ?></td>
                            <td><?php echo $row['nombre_producto']; ?></td>
                            <td><?php echo $row['cantidad_producto']; ?></td>
                            <td><?php echo $row['precio_producto']; ?></td>
