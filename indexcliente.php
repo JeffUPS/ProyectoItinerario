@@ -1,12 +1,13 @@
-<?php 
-	session_start(); 
-
-	if (!isset($_SESSION['correo'])) {
-		$_SESSION['msg'] = "You must log in first";
-		header('location: login.php');
-	}
-	echo isset($_GET['id']);
+<?php
+session_start();
+if(!isset($_SESSION['datos_login']))
+{
+  header("Location: indexcliente.php");
+}
+$arregloUsuario=$_SESSION['datos_login'];
+ 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -17,7 +18,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Lacteos "El Misa" | Bienvenido</title>
+      <title>Lacteos "El Misa"</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -44,20 +45,6 @@
       <!-- end loader --> 
       <!-- header -->
       <header>
-      <div class="header">
-            <div class="head_top">
-               <div class="container">
-                  
-                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                       <div class="top-box">
-                           <?php  if (isset($_SESSION['correo'])) : ?>
-						            <a href="#"><?php echo $_SESSION['correo']; ?></a>
-                           <?php endif ?>     
-                    </div>
-                  </div>
-               </div>
-            </div>
-         </div>
          <!-- header inner -->
          <div class="container">
             <div class="row">
@@ -73,9 +60,20 @@
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                              <li> <a href="indexcliente.php">Inicio</a> </li>
+                              <li class="active"> <a href="indexcliente.php">Inicio</a> </li>
                               <li> <a href="#">Quienes Somos</a> </li>
-                              <li> <a href="#">Productos</a> </li>	
+                              <li> <a href="productclient.php">Productos</a> </li>
+                              <li><a href="admin.php" class="d-block"><?php echo $arregloUsuario['nombre'];?></a></li> 
+                              <li>
+                    <a href="cartclient.php" class="site-cart">
+                    Ver Carrito
+                      <?php 
+                        if(isset($_SESSION['CARRITO'])){
+                          echo count($_SESSION['CARRITO']);
+                        }
+                      ?>
+                    </a>
+                  </li>
                            </ul>
                         </nav>
                      </div>

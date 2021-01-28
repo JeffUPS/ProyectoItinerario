@@ -56,7 +56,17 @@
                            <ul class="menu-area-main">
                               <li> <a href="index.php">Inicio</a> </li>
                               <li> <a href="#">Quienes Somos</a> </li>
-                              <li> <a href="#">Productos</a> </li>
+                              <li> <a href="product.php">Productos</a> </li>
+                              <li>
+                    <a href="cart.php" class="site-cart">
+                    Ver Carrito
+                      <?php 
+                        if(isset($_SESSION['CARRITO'])){
+                          echo count($_SESSION['CARRITO']);
+                        }
+                      ?>
+                    </a>
+                  </li>
                                
                            </ul>
                         </nav>
@@ -90,10 +100,10 @@
             <div class="row">
                 <div class="col-md-12">
 
-                    <form class="main_form" method="post" action="login.php">
+                    <form class="main_form" method="post" action="check.php">
                         <div class="row">
                             <div class=" col-md-6">
-                                <input class="form-control" placeholder="Ingresar su Correo Electronico" type="email" name="correo">
+                                <input class="form-control" placeholder="Ingresar su Correo Electronico" type="email" name="email">
                             </div>
                             <div class=" col-md-6">
                                 <input class="form-control" placeholder="Ingresar su Contraseña" type="password" name="password">

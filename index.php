@@ -52,8 +52,17 @@
                            <ul class="menu-area-main">
                               <li class="active"> <a href="index.php">Inicio</a> </li>
                               <li> <a href="#">Quienes Somos</a> </li>
-                              <li> <a href="#">Productos</a> </li>
-                               
+                              <li> <a href="product.php">Productos</a> </li>
+                              <li>
+                    <a href="cart.php" class="site-cart">
+                    Ver Carrito
+                      <?php 
+                        if(isset($_SESSION['CARRITO'])){
+                          echo count($_SESSION['CARRITO']);
+                        }
+                      ?>
+                    </a>
+                  </li>
                            </ul>
                         </nav>
                      </div>

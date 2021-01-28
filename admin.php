@@ -1,19 +1,21 @@
-<?php 
-	session_start(); 
-
-	if (!isset($_SESSION['correo'])) {
-		$_SESSION['msg'] = "You must log in first";
-		header('location: login.php');
-	}
-   echo isset($_GET['id']);
-   
-   require 'database.php';
-
-
+<?php
+session_start();
+include "database.php";
+if(!isset($_SESSION['datos_login']))
+{
+  header("Location:admin.php");
+}
+$arregloUsuario=$_SESSION['datos_login'];
+if($arregloUsuario['nivel'] !='admin'){
+  header("Location:admin.php");
+}
+$resultado=$conexion->query(
+"SELECT productos.*,categorias.nombre as catego FROM 
+productos 
+INNER JOIN categorias on productos.id_categoria=categorias.id
+ORDER BY id DESC")or die($conexion->error);
  
-   $prod= "SELECT p.id_producto,c.categoria,p.nombre_producto,p.cantidad_producto,p.precio_producto FROM productos p,categoria c WHERE c.id_categoria=p.id_categoria";
-   $pd=$mysqli->query($prod);
-?>
+ ?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -57,9 +59,7 @@
                   
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                        <div class="top-box">
-                           <?php  if (isset($_SESSION['correo'])) : ?>
-						            <a href="#"><?php echo $_SESSION['correo']; ?></a>
-                           <?php endif ?>     
+                           
                     </div>
                   </div>
                </div>
@@ -81,8 +81,8 @@
                         <nav class="main-menu">
                            <ul class="menu-area-main">
                               <li class="active"> <a href="admin.php">Inicio</a> </li>
-                              <li> <a href="registercategoria.php">Registro Categoria</a> </li>
-                              <li> <a href="registerproduct.php">Registro Productos</a> </li>	
+                              <li> <a href="pedidos.php">Pedidos</a> </li>
+                              <li> <a href="usuarios.php">Usuarios</a> </li>
                            </ul>
                         </nav>
                      </div>
@@ -110,44 +110,245 @@
                   </div>
                </div>
             </div>
-            <div class="row table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                    <th>ID</th>
-                    <th>CATEGORIA</th>
-                    <th>PRODUCTO</th>
-                    <th>PRECIO</th>
-                    <th>CANTIDAD</th>
-                    <th> </th>
-                    <th> </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                           <?php while($row = $pd->fetch_array(
-                           MYSQLI_ASSOC))  { ?>
-                           <tr>
-                           <td><?php echo $row['id_producto']; ?></td>
-                           <td><?php echo $row['categoria']; ?></td>
-                           <td><?php echo $row['nombre_producto']; ?></td>
-                           <td><?php echo $row['cantidad_producto']; ?></td>
-                           <td><?php echo $row['precio_producto']; ?></td>
-                           <td><a href="actualizarproducto.php?id_producto=<?php echo $row['id_producto'];?>" class="btn btn-info"><i class="fa fa-pencil-square-o"></i>Edit</a></td>
-                           <td><a href="eliminarproducto.php?id_producto=<?php echo $row['id_producto'];?>" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i> Delete</a></td>
-                           </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
             </div>
         </div>
     </div>
       <!-- end service -->
+      <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">PRODUCTOS</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6 text-right">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-plus"></i> INSERTAR PRODUCTO
+          </button>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+      <?php
+        if(isset($_GET['error'])){
+
+      ?>
+          <div class="alert alert-danger" role="alert">
+            <?php echo $_GET['error'];?>
+          </div>
+
+          <?php }?>
+
+          <?php
+        if(isset($_GET['success'])){
+
+      ?>
+          <div class="alert alert-success" role="alert">
+            SE HA INSERTADO CORRECTAMENTE
+          </div>
+
+          <?php }?>
+        <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Inventario</th>
+            <th>Categoria</th>
+            <th>Color</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <?php
+              while($f=mysqli_fetch_array($resultado)){
+            ?>
+            <td><?php echo $f['id'];?></td>
+            <td>
+            <img src="./images/<?php echo $f['imagen'];?>" width="20px" height="20px"/>
+            <?php echo $f['nombre'];?>
+            </td>
+            <td><?php echo $f['descripcion'];?></td>
+            <td>$<?php echo number_format($f['precio'],2,'.',' ' );?></td>
+            <td><?php echo $f['inventario'];?></td>
+            <td><?php echo $f['catego'];?></td>
+            <td><?php echo $f['color'];?></td>
+            <td>
+               <button class="btn btn-primary btn-small btnEditar" 
+                data-id="<?php echo $f['id'];?>"
+                data-nombre="<?php echo $f['nombre'];?>"
+                data-precio="<?php echo $f['precio'];?>"
+                data-descripcion="<?php echo $f['descripcion'];?>"
+                data-inventario="<?php echo $f['inventario'];?>"
+                data-categoria="<?php echo $f['id_categoria'];?>"
+                data-color="<?php echo $f['color'];?>"
+                data-toggle="modal" data-target="#modalEditar">
+                  <i class="fa fa-edit"></i>
+                </button>
+
+                <button class="btn btn-danger btn-small btnEliminar" 
+                data-id="<?php echo $f['id'];?>"
+                data-toggle="modal" data-target="#modalEliminar">
+                  <i class="fa fa-trash"></i>
+                </button>
+            </td>
+          </tr>
+          <?php 
+        }
+        ?>
+        </tbody>
+        </table>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <form action="insertarproducto.php" method="POST" enctype="multipart/form-data">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Insertar Producto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+             <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" placeholder="nombre" id="nombre" class="form-control" required>
+             </div>     
+             <div class="form-group">
+                <label for="descripcion">Descripcion</label>
+                <input type="text" name="descripcion" placeholder="descripcion" id="descripcion" class="form-control" required>
+             </div>  
+             <div class="form-group">
+                <label for="imagen">Imagen</label>
+                <input type="file" name="imagen"  id="imagen" class="form-control" required>
+             </div>  
+             <div class="form-group">
+                <label for="precio">Precio</label>
+                <input type="text" name="precio" placeholder="precio" id="precio" class="form-control" required>
+             </div>  
+             <div class="form-group">
+                <label for="inventario">Inventario</label>
+                <input type="text" name="inventario" placeholder="inventario" id="inventario" class="form-control" required>
+             </div>   
+             <div class="form-group">
+                <label for="categoria">Categoria</label>
+                <select name="categoria" id="categoria" class="form-control" required>
+                <?php 
+                  $res=$conexion->query("SELECT * FROM categorias");
+                  while($f=mysqli_fetch_array($res)){
+                    echo '<option value="'.$f['id'].'">'.$f['nombre'].'</option>';
+                  }
+                ?>
+                </select>
+             </div>
+             <div class="form-group">
+                <label for="color">Color</label>
+                <input type="text" name="color" placeholder="color" id="color" class="form-control" required>
+             </div>   
+    
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+          <button type="submit" class="btn btn-primary">GUARDAR</button>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+  <!-- Modal Eliminar-->
+<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEliminarLabel">Eliminar Producto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+           ¿DESEAS ELIMINAR EL PRODUCTO?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+          <button type="submit" class="btn btn-danger eliminar" data-dismiss="modal">ELIMINAR</button>
+        </div>
+   
+    </div>
+  </div>
+</div>
+
+  <!-- Modal Editar-->
+  <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditar" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <form action="editarproducto.php" method="POST" enctype="multipart/form-data">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEditar">Editar Producto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                  <input type="hidden" id="idEdit" name="id">
+                  
+             <div class="form-group">
+                <label for="nombreEdit">Nombre</label>
+                <input type="text" name="nombre" placeholder="nombre" id="nombreEdit" class="form-control" required>
+             </div>     
+             <div class="form-group">
+                <label for="descripcionEdit">Descripcion</label>
+                <input type="text" name="descripcion" placeholder="descripcion" id="descripcionEdit" class="form-control" required>
+             </div>  
+             <div class="form-group">
+                <label for="imagen">Imagen</label>
+                <input type="file" name="imagen"  id="imagen" class="form-control" >
+             </div>  
+             <div class="form-group">
+                <label for="precioEdit">Precio</label>
+                <input type="text" name="precio" placeholder="precio" id="precioEdit" class="form-control" required>
+             </div>  
+             <div class="form-group">
+                <label for="inventarioEdit">Inventario</label>
+                <input type="text" name="inventario" placeholder="inventario" id="inventarioEdit" class="form-control" required>
+             </div>   
+             <div class="form-group">
+                <label for="categoriaEdit">Categoria</label>
+                <select name="categoria" id="categoriaEdit" class="form-control" required>
+                <?php 
+                  $res=$conexion->query("SELECT * FROM categorias");
+                  while($f=mysqli_fetch_array($res)){
+                    echo '<option value="'.$f['id'].'">'.$f['nombre'].'</option>';
+                  }
+                ?>
+                </select>
+             </div>
+             <div class="form-group">
+                <label for="colorEdit">Color</label>
+                <input type="text" name="color" placeholder="color" id="colorEdit" class="form-control" required>
+             </div>   
+    
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+          <button type="submit" class="btn btn-primary editar">EDITAR</button>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
       <!--  footer --> 
-
-
-
-
       <footr>
          <div class="footer">
             <div class="container">

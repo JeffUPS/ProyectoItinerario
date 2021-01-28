@@ -56,8 +56,17 @@
                            <ul class="menu-area-main">
                               <li> <a href="index.php">Inicio</a> </li>
                               <li> <a href="#">Quienes Somos</a> </li>
-                              <li> <a href="#">Productos</a> </li>
-                               
+                              <li> <a href="product.php">Productos</a> </li>
+                              <li>
+                    <a href="cart.php" class="site-cart">
+                    Ver Carrito
+                      <?php 
+                        if(isset($_SESSION['CARRITO'])){
+                          echo count($_SESSION['CARRITO']);
+                        }
+                      ?>
+                    </a>
+                  </li>
                            </ul>
                         </nav>
                      </div>
@@ -90,19 +99,19 @@
             <div class="row">
                 <div class="col-md-12">
 
-                    <form class="main_form" method="post" action="registro.php">
+                    <form class="main_form" method="post" action="insertarpedido.php">
                         <div class="row">
-                           <div class=" col-md-6">
-                                <input class="form-control" type="text" name="nombre" value="<?php echo $nombre; ?>" placeholder="Ingresar su Nombre">
+                            <div class=" col-md-6">
+                                <input class="form-control" type="email" name="correo" value="<?php echo $correo; ?>" placeholder="Ingresar su Nombre" >
+                            </div>
+                            <div class=" col-md-6">
+                                <input class="form-control" type="text" name="nombre" value="<?php echo $nombre; ?>" placeholder="Ingresar su Telefono">
                             </div>
                             <div class=" col-md-6">
                                 <input class="form-control" type="email" name="correo" value="<?php echo $correo; ?>" placeholder="Ingresar su Correo Electronico" >
                             </div>
                             <div class=" col-md-6">
                                 <input class="form-control" type="password" name="password_1" placeholder="Ingresar su Contraseña">
-                            </div>
-                            <div class=" col-md-6">
-                                <input class="form-control" type="password" name="password_2" placeholder="Confirmar Contraseña">
                             </div>
                             <div class=" col-md-12">
                                 <button type="submit" class="send" name="reg_user">Registrar</button>
