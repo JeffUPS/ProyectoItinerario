@@ -1,5 +1,5 @@
 <?php
-include "database.php";
+include "./database.php";
 
 if(isset($_POST['nombre'])&&isset($_POST['descripcion'])&&isset($_POST['precio'])
 &&isset($_POST['inventario'])&&isset($_POST['categoria'])&&isset($_POST['color']) ){

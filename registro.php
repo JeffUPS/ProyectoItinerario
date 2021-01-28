@@ -99,19 +99,19 @@
             <div class="row">
                 <div class="col-md-12">
 
-                    <form class="main_form" method="post" action="insertarpedido.php">
+                    <form class="main_form" method="post" action="guardarcliente.php">
                         <div class="row">
                             <div class=" col-md-6">
-                                <input class="form-control" type="email" name="correo" value="<?php echo $correo; ?>" placeholder="Ingresar su Nombre" >
+                                <input class="form-control" type="text" name="c_fname" id="c_fname" value="<?php echo $nombre; ?>" placeholder="Ingresar su Nombre" >
                             </div>
                             <div class=" col-md-6">
-                                <input class="form-control" type="text" name="nombre" value="<?php echo $nombre; ?>" placeholder="Ingresar su Telefono">
+                                <input class="form-control" type="text" name="c_phone" id="c_phone" value="<?php echo $telefono; ?>" placeholder="Ingresar su Telefono">
                             </div>
                             <div class=" col-md-6">
-                                <input class="form-control" type="email" name="correo" value="<?php echo $correo; ?>" placeholder="Ingresar su Correo Electronico" >
+                                <input class="form-control" type="email" name="c_email_address" id="c_email_address" value="<?php echo $email; ?>" placeholder="Ingresar su Correo Electronico" >
                             </div>
                             <div class=" col-md-6">
-                                <input class="form-control" type="password" name="password_1" placeholder="Ingresar su Contraseña">
+                                <input class="form-control" type="password" name="c_account_password" id="c_account_password" placeholder="Ingresar su Contraseña">
                             </div>
                             <div class=" col-md-12">
                                 <button type="submit" class="send" name="reg_user">Registrar</button>

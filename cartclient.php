@@ -212,9 +212,9 @@
                 <button class="btn btn-primary btn-sm btn-block">Update Cart</button>
               </div>
               -->
-              <div class="col-md-6">
-                <button class="btn btn-outline-primary btn-sm btn-block">Continuar comprando</button>
-              </div>
+              <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                  <li><a class="buy" href="product.php">Continuar Comprando</a></li>
+               </div>
             </div>
             
           </div>
@@ -223,7 +223,7 @@
               <div class="col-md-7">
                 <div class="row">
                   <div class="col-md-12 text-right border-bottom mb-5">
-                    <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                    <h3 class="text-black h4 text-uppercase">Total Compra</h3>
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -245,7 +245,7 @@
 
                 <div class="row">
                   <div class="col-md-12">
-                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='checkout.php'">PROCEDER COMPRA</button>
+                    <button class="buy" onclick="window.location='checkout.php'">PROCEDER COMPRA</button>
                   </div>
                 </div>
               </div>

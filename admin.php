@@ -373,26 +373,11 @@ ORDER BY id DESC")or die($conexion->error);
                </div>
                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                   <div class="contact">
-                     <h3>ADDITIONAL LINKS</h3>
-                     <ul class="lik">
-                         <li> <a href="#">About us</a></li>
-                         <li> <a href="#">Terms and conditions</a></li>
-                         <li> <a href="#">Privacy policy</a></li>
-                         <li> <a href="#">News</a></li>
-                          <li> <a href="#">Contact us</a></li>
-                     </ul>
+                    
                   </div>
                </div>
                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                  <div class="contact">
-                     <h3>service</h3>
-                      <ul class="lik">
-                    <li> <a href="#"> Data recovery</a></li>
-                         <li> <a href="#">Computer repair</a></li>
-                         <li> <a href="#">Mobile service</a></li>
-                         <li> <a href="#">Network solutions</a></li>
-                          <li> <a href="#">Technical support</a></li>
-                  </div>
+                  
                </div>
                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                   <div class="contact">
@@ -434,7 +419,43 @@ ORDER BY id DESC")or die($conexion->error);
          $(this).removeClass('transition');
          });
          });
-         
+         $(document).ready(function(){
+    var idEliminar=-1;
+    var fila;
+    $(".btnEliminar").click(function(){
+      idEliminar=$(this).data('id');
+      fila=$(this).parent('td').parent('tr');
+    });
+    $(".eliminar").click(function(){
+      $.ajax({
+        url:'eliminarproducto.php',
+        method:'POST',
+        data:{
+          id:idEliminar
+        }
+      }).done(function(res){
+        //alert(res);
+        $(fila).fadeOut(1000);
+      });
+      
+    });
+    $(".btnEditar").click(function(){
+      idEditar=$(this).data('id');
+      var nombre=$(this).data('nombre');
+      var precio=$(this).data('precio');
+      var descripcion=$(this).data('descripcion');
+      var inventario=$(this).data('inventario');
+      var categoria=$(this).data('categoria');
+      var color=$(this).data('color');
+      $("#nombreEdit").val(nombre);
+      $("#precioEdit").val(precio);
+      $("#descripcionEdit").val(descripcion);
+      $("#inventarioEdit").val(inventario);
+      $("#categoriaEdit").val(categoria);
+      $("#colorEdit").val(color);
+      $("#idEdit").val(idEditar);
+    });
+  });
       </script> 
    </body>
 </html>

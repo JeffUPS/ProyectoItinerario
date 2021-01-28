@@ -23,7 +23,14 @@
                 'nivel'=>$nivel
 
             );
-            header("Location:indexcliente.php");
+            if($nivel=="cliente"){
+                header("Location:indexcliente.php");
+
+            }
+            if($nivel=="admin"){
+                header("Location:admin.php");
+            }
+            
 
         }else{
             header("Location:login.php?error=Credenciales incorrectas");
