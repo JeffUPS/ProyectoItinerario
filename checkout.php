@@ -100,11 +100,11 @@ $arreglo=$_SESSION['CARRITO'];
         <div class="row">
        
           <div class="col-md-6 mb-5 mb-md-0">
-            <h2 class="h3 mb-3 text-black">INGRESAR DATOS</h2>
+            <h2 class="h3 mb-3 text-black">INGRESAR DATOS PARA FACTURA</h2>
             <div class="p-3 p-lg-5 border">
               <div class="form-group">
                 <label for="c_country" class="text-black">PAIS <span class="text-danger">*</span></label>
-                <select id="c_country" class="form-control" name="country">
+                <select id="c_country" class="form-control" name="country" style="height:60px" >
                   <option value="1">SELECCIONA UN PAIS</option>    
                   <option value="ECUADOR">Ecuador</option>    
                   <option value="COLOMBIA">Colombia</option>    
@@ -169,12 +169,12 @@ $arreglo=$_SESSION['CARRITO'];
             
             <div class="row mb-5">
               <div class="col-md-12">
-                <h2 class="h3 mb-3 text-black">Your Order</h2>
+                <h2 class="h3 mb-3 text-black">Sus productos:</h2>
                 <div class="p-3 p-lg-5 border">
                   <table class="table site-block-order-table mb-5">
                     <thead>
-                      <th>Product</th>
-                      <th>Total</th>
+                      <th>Producto:</th>
+                      <th>Total:</th>
                     </thead>
                     <tbody>
                     <?php 

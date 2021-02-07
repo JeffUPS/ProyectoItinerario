@@ -105,10 +105,10 @@
                                 <input class="form-control" type="text" name="c_fname" id="c_fname" value="<?php echo $nombre; ?>" placeholder="Ingresar su Nombre" >
                             </div>
                             <div class=" col-md-6">
-                                <input class="form-control" type="text" name="c_phone" id="c_phone" value="<?php echo $telefono; ?>" placeholder="Ingresar su Telefono">
+                                <input class="form-control" type="text" name="c_phone" id="c_phone"  placeholder="Ingresar su Telefono">
                             </div>
                             <div class=" col-md-6">
-                                <input class="form-control" type="email" name="c_email_address" id="c_email_address" value="<?php echo $email; ?>" placeholder="Ingresar su Correo Electronico" >
+                                <input class="form-control" type="email" name="c_email_address" id="c_email_address"  placeholder="Ingresar su Correo Electronico" >
                             </div>
                             <div class=" col-md-6">
                                 <input class="form-control" type="password" name="c_account_password" id="c_account_password" placeholder="Ingresar su Contraseña">

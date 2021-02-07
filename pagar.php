@@ -153,19 +153,19 @@ $preference->save();
 
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_fname" class="text-black">Nombre:<?php echo $datosUsuario[4];?> </label>
+                    <label for="c_fname" class="text-black">Nombre:<?php echo $datosUsuario[6];?> </label>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_fname" class="text-black">Email:<?php echo $datosUsuario[6];?> </label>
+                    <label for="c_fname" class="text-black">Email:<?php echo $datosUsuario[8];?> </label>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_fname" class="text-black">Telefono:<?php echo $datosUsuario[5];?> </label>
+                    <label for="c_fname" class="text-black">Telefono:<?php echo $datosUsuario[7];?> </label>
                   </div>
                 </div>
 

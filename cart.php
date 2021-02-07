@@ -152,12 +152,12 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th class="product-thumbnail">Image</th>
-                    <th class="product-name">Product</th>
-                    <th class="product-price">Price</th>
-                    <th class="product-quantity">Quantity</th>
+                    <th class="product-thumbnail">Imagen</th>
+                    <th class="product-name">Nombre de Producto</th>
+                    <th class="product-price">Precio</th>
+                    <th class="product-quantity">Cantidad</th>
                     <th class="product-total">Total</th>
-                    <th class="product-remove">Remove</th>
+                    <th class="product-remove">Eliminar</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -170,14 +170,14 @@
                 ?>
                   <tr>
                     <td class="product-thumbnail">
-                      <img src="images/<?php echo $arregloCarrito[$i]['Imagen']; ?>" alt="Image" class="img-fluid">
+                      <img src="images/<?php echo $arregloCarrito[$i]['Imagen']; ?>" alt="Image" class="img-fluid" width="120px">
                     </td>
                     <td class="product-name">
                       <h2 class="h5 text-black"><?php echo $arregloCarrito[$i]['Nombre']; ?></h2>
                     </td>
                     <td>$<?php echo $arregloCarrito[$i]['Precio']; ?></td>
                     <td>
-                      <div class="input-group mb-3" style="max-width: 120px;">
+                      <div class="input-group mb-3" style="max-width: 180px">
                         <div class="input-group-prepend">
                           <button class="btn btn-outline-primary js-btn-minus btnIncrementar" type="button">&minus;</button>
                         </div>

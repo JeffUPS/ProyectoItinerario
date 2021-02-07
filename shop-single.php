@@ -94,13 +94,14 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <img src="images/<?php echo $fila[4]; ?>" alt="<?php echo $fila[1]; ?>" class="img-fluid">
+            <img src="images/<?php echo $fila[4]; ?>" alt="<?php echo $fila[1]; ?>" class="img-fluid" width="240px">
           </div>
           <div class="col-md-6">
             <h2 class="text-black"><?php echo $fila[1]; ?></h2>
             <p><?php echo $fila[2]; ?></p>
             <p><strong class="text-primary h4">$<?php echo $fila[3]; ?></strong></p>
             
+            <!--
             <div class="mb-5">
               <div class="input-group mb-3" style="max-width: 120px;">
               <div class="input-group-prepend">
@@ -112,8 +113,8 @@
               </div>
             </div>
 
-            </div>
-            <p><a href="cart.php?id=<?php echo $fila[0]; ?>" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+            </div>-->
+            <p><a href="cart.php?id=<?php echo $fila[0]; ?>" class="buy-now btn btn-sm btn-primary">Añadir a carrito</a></p>
 
           </div>
         </div>

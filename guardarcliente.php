@@ -8,7 +8,7 @@ require_once 'database.php';
   $c_account_password = $_REQUEST['c_account_password'];
   
 $sql = "INSERT INTO usuario(nombre,telefono,email,password,img_perfil,nivel) 
-VALUES ('$c_fname','$c_phone','$c_email_address','$c_account_password','default.jpg','cliente')";
+VALUES ('$c_fname','$c_phone','$c_email_address',sha1('$c_account_password'),'default.jpg','cliente')";
 
 $resultado = $conexion->query($sql);
 
