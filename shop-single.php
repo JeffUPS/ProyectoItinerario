@@ -1,7 +1,7 @@
 <?php
   include('database.php');
   if(isset($_GET['id'])){
-    $resultado=$conexion->query("SELECT * FROM productos where id=".$_GET['id'])or die($conexion->error);
+    $resultado=$conexion->query("SELECT * FROM productos WHERE id=".$_GET['id'])or die($conexion->error);
     if(mysqli_num_rows($resultado)>0){
       $fila=mysqli_fetch_row($resultado);
     }else{

@@ -9,11 +9,7 @@ $arregloUsuario=$_SESSION['datos_login'];
 if($arregloUsuario['nivel'] !='admin'){
   header("Location: admin.php");
 }
-$resultado=$conexion->query(
-"
-select ventas.*, usuario.nombre, usuario.telefono, usuario.email from ventas 
-inner join usuario on ventas.id_usuario = usuario.id
-")or die($conexion->error);
+$resultado=$conexion->query("SELECT ventas.*, usuario.nombre, usuario.telefono, usuario.email FROM ventas INNER JOIN usuario ON ventas.id_usuario = usuario.id")or die($conexion->error);
  
  ?>
 <!DOCTYPE html>
@@ -174,7 +170,7 @@ inner join usuario on ventas.id_usuario = usuario.id
                 <p>Status: <b><?php echo $f['status'] ;?></b>  </p>
                 <p class="h6">Datos de envio</p>
                 <?php 
-                    $re=$conexion->query("select * from envios where id_venta=".$f['id'])or die($conexion->error);
+                    $re=$conexion->query("SELECT * FROM envios WHERE id_venta=".$f['id'])or die($conexion->error);
                     $fila=mysqli_fetch_row($re);
                 
                 ?>
@@ -195,9 +191,9 @@ inner join usuario on ventas.id_usuario = usuario.id
         <tbody>
         <tr>
             <?php
-            $re=$conexion->query("select productos_venta.*, productos.nombre, productos.color
-             from productos_venta inner join productos on productos_venta.id_producto=productos.id
-             where productos_venta.id_producto = productos.id")or die($conexion->error);
+            $re=$conexion->query("SELECT productos_venta.*, productos.nombre, productos.color
+             FROM productos_venta INNER JOIN productos ON productos_venta.id_producto=productos.id
+             WHERE productos_venta.id_producto = productos.id")or die($conexion->error);
               while($f2=mysqli_fetch_array($re)){
             ?>
             <td><?php echo $f2['id'];?></td>

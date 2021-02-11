@@ -10,9 +10,9 @@ if($arregloUsuario['nivel'] !='admin'){
   header("Location:admin.php");
 }
 $resultado=$conexion->query(
-"SELECT productos.*,categorias.nombre as catego FROM 
+"SELECT productos.*,categorias.nombre AS catego FROM 
 productos 
-INNER JOIN categorias on productos.id_categoria=categorias.id
+INNER JOIN categorias ON productos.id_categoria=categorias.id
 ORDER BY id DESC")or die($conexion->error);
  
  ?>

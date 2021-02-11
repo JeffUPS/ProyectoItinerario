@@ -7,15 +7,15 @@ $datos=$conexion->query("SELECT
 ventas.*, 
 usuario.nombre,usuario.telefono,usuario.email
 FROM ventas 
-inner join usuario on ventas.id_usuario=usuario.id
-where ventas.id=".$_GET['id_venta'])or die($conexion->error);
+INNER JOIN usuario ON ventas.id_usuario=usuario.id
+WHERE ventas.id=".$_GET['id_venta'])or die($conexion->error);
 $datosUsuario=mysqli_fetch_row($datos);
 $datos2=$conexion->query("SELECT * FROM envios WHERE id_venta=".$_GET['id_venta'])or die($conexion->error);
 $datosEnvio=mysqli_fetch_row($datos2);
 $datos3=$conexion->query("SELECT productos_venta.*,
-productos.nombre as nombre_producto,productos.imagen
-from productos_venta inner join productos on productos_venta.id_producto=productos.id
-where id_venta=".$_GET['id_venta'])or die($conexion->error);
+productos.nombre AS nombre_producto,productos.imagen
+FROM productos_venta INNER JOIN productos ON productos_venta.id_producto=productos.id
+WHERE id_venta=".$_GET['id_venta'])or die($conexion->error);
 // SDK de Mercado Pago
 require __DIR__ .  '/vendor/autoload.php';
 

@@ -24,7 +24,7 @@
     
     $row = $pd->fetch_assoc();
 
-    $sql="SELECT * FROM categoria";
+    $sql="SELECT * FROM categorias";
     $resultado = $mysqli->query($sql); 
     
     echo $id_producto;

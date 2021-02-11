@@ -9,10 +9,8 @@ $arregloUsuario=$_SESSION['datos_login'];
 if($arregloUsuario['nivel'] !='admin'){
   header("Location: admin.php");
 }
-$resultado=$conexion->query(
-"
-select ventas.*, usuario.nombre, usuario.telefono, usuario.email from ventas 
-inner join usuario on ventas.id_usuario = usuario.id
+$resultado=$conexion->query("SELECT ventas.*, usuario.nombre, usuario.telefono, usuario.email FROM ventas 
+INNER JOIN usuario ON ventas.id_usuario = usuario.id
 ")or die($conexion->error);
  
  ?>
@@ -154,8 +152,8 @@ inner join usuario on ventas.id_usuario = usuario.id
         <tbody>
         <tr>
             <?php
-            $re=$conexion->query("select usuario.*, usuario.nombre, usuario.email
-             from usuario")or die($conexion->error);
+            $re=$conexion->query("SELECT usuario.*, usuario.nombre, usuario.email
+             FROM usuario")or die($conexion->error);
               while($f2=mysqli_fetch_array($re)){
             ?>
             <td><?php echo $f2['id'];?></td>

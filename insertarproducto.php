@@ -13,7 +13,7 @@ if(isset($_POST['nombre'])&&isset($_POST['descripcion'])&&isset($_POST['precio']
     $nombreFinal=time().'.'.$extension;
     if($extension=='jpg' || $extension=='png'){
         if(move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta.$nombreFinal)){
-                $conexion->query("INSERT INTO productos (nombre,descripcion,imagen,precio,color,id_categoria,inventario)VALUES
+                $conexion->query("INSERT INTO productos(nombre,descripcion,imagen,precio,color,id_categoria,inventario)VALUES
                 (
                     '".$_POST['nombre']."',
                     '".$_POST['descripcion']."',

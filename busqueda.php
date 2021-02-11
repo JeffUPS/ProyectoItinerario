@@ -105,7 +105,7 @@ if(!isset($_GET['texto'])){
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
                     <?php
-              $re=$conexion->query("select * from categorias");
+              $re=$conexion->query("SELECT * FROM categorias");
               while($f=mysqli_fetch_array($re)){
                 
 
@@ -126,15 +126,15 @@ if(!isset($_GET['texto'])){
             <div class="row mb-5">
               <?php 
               
-              $resultado=$conexion->query("SELECT productos.*, categorias.nombre as categoria FROM productos
-              inner join categorias on productos.id_categoria=categorias.id
+              $resultado=$conexion->query("SELECT productos.*, categorias.nombre AS categoria FROM productos
+              INNER JOIN categorias ON productos.id_categoria=categorias.id
               WHERE
-              productos.nombre like '%".$_GET['texto']."%' or
-              productos.descripcion like '%".$_GET['texto']."%'or
-              productos.color like '%".$_GET['texto']."%'or
-              categorias.nombre like '%".$_GET['texto']."%'
+              productos.nombre LIKE '%".$_GET['texto']."%' OR
+              productos.descripcion LIKE '%".$_GET['texto']."%'OR
+              productos.color LIKE '%".$_GET['texto']."%'OR
+              categorias.nombre LIKE '%".$_GET['texto']."%'
               
-              order by id DESC limit 10")or die($conexion->error);
+              ORDER BY id DESC LIMIT 10")or die($conexion->error);
               if(mysqli_num_rows($resultado)>0){
 
               
@@ -179,7 +179,7 @@ if(!isset($_GET['texto'])){
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <ul class="list-unstyled mb-0">
               <?php
-              $re=$conexion->query("select * from categorias");
+              $re=$conexion->query("SELECT * FROM categorias");
               while($f=mysqli_fetch_array($re)){
 
               
@@ -188,7 +188,7 @@ if(!isset($_GET['texto'])){
                 <span><?php echo $f['nombre'];?></span> 
                 <span class="text-black ml-auto">
                 <?php 
-                  $re2=$conexion->query("select count(*) from productos where id_categoria=".$f['id']);
+                  $re2=$conexion->query("SELECT COUNT(*) FROM productos WHERE id_categoria=".$f['id']);
                   $fila=mysqli_fetch_row($re2);
                   echo $fila[0];
                 ?>
@@ -203,7 +203,7 @@ if(!isset($_GET['texto'])){
               <div class="mb-4">
                 <h3 class="mb-3 h6 text-uppercase text-black d-block">Marca</h3>
                 <?php 
-                $re=$conexion->query("Select distinct color from productos");
+                $re=$conexion->query("SELECT distinct color FROM productos");
                 while($f=mysqli_fetch_array($re)){
 
                 

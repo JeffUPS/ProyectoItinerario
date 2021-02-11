@@ -106,13 +106,13 @@ $arregloUsuario=$_SESSION['datos_login'];
               include('database.php');
         
               $limite=10;//productos por pagina
-              $totalQuery=$conexion->query("SELECT count(*) FROM productos")or die($conexion->error);
+              $totalQuery=$conexion->query("SELECT COUNT(*) FROM productos")or die($conexion->error);
               $totalProductos=mysqli_fetch_row($totalQuery);
               $totalBotones=round($totalProductos[0]/$limite);
               if(isset($_GET['limite'])){
-                $resultado=$conexion->query("SELECT * FROM productos WHERE inventario>0 order by id DESC limit ".$_GET['limite'].",".$limite)or die($conexion->error);
+                $resultado=$conexion->query("SELECT * FROM productos WHERE inventario>0 ORDER BY id DESC LIMIT ".$_GET['limite'].",".$limite)or die($conexion->error);
               }else{
-                $resultado=$conexion->query("SELECT * FROM productos WHERE inventario>0 order by id DESC limit ".$limite)or die($conexion->error);
+                $resultado=$conexion->query("SELECT * FROM productos WHERE inventario>0 ORDER BY id DESC LIMIT ".$limite)or die($conexion->error);
               }
               //die($totalBotones);//53 dividir entre el numero de limite que quiero mostrar
               while ($fila = mysqli_fetch_array($resultado)){
@@ -171,14 +171,14 @@ $arregloUsuario=$_SESSION['datos_login'];
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <ul class="list-unstyled mb-0">
               <?php
-              $re=$conexion->query("select * from categorias");
+              $re=$conexion->query("SELECT * FROM categorias");
               while($f=mysqli_fetch_array($re)){
               ?>
                 <li class="mb-1"><a href="./busquedaclient.php?texto=<?php echo $f['nombre'] ?>" class="d-flex">
                 <span><?php echo $f['nombre'];?></span> 
                 <span class="text-black ml-auto">
                 <?php 
-                  $re2=$conexion->query("select count(*) from productos where id_categoria=".$f['id']);
+                  $re2=$conexion->query("SELECT COUNT(*) FROM productos WHERE id_categoria=".$f['id']);
                   $fila=mysqli_fetch_row($re2);
                   echo $fila[0];
                 ?>
@@ -193,7 +193,7 @@ $arregloUsuario=$_SESSION['datos_login'];
               <div class="mb-4">
                 <h3 class="mb-3 h6 text-uppercase text-black d-block">Marca</h3>
                 <?php 
-                $re=$conexion->query("Select distinct color from productos");
+                $re=$conexion->query("SELECT distinct color FROM productos");
                 while($f=mysqli_fetch_array($re)){?>
                 <a href="./busquedaclient.php?texto=<?php echo $f['color'];?>" class="d-flex color-item align-items-center" >
                   <span class="bg-danger color d-inline-block rounded-circle mr-2"></span> <span class="text-black"><?php echo $f['color'];?></span>
