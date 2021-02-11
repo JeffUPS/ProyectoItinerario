@@ -60,9 +60,18 @@ $arregloUsuario=$_SESSION['datos_login'];
                            <ul class="menu-area-main">
                               <li> <a href="indexcliente.php">Inicio</a> </li>
                               <li> <a href="#">Quienes Somos</a> </li>
-                              <li> <a href="productclient.php">Productos</a> </li>
+                              <li class="active"> <a href="productclient.php">Productos</a> </li>
                               <li><a href="#" class="d-block"><?php echo $arregloUsuario['nombre'];?></a></li>
-                               
+                              <li>
+                    <a href="cartclient.php" class="site-cart">
+                    <img src="images/carrito.png" width="40" height="40"/>
+                      <?php 
+                        if(isset($_SESSION['CARRITO'])){
+                          echo count($_SESSION['CARRITO']);
+                        }
+                      ?>
+                    </a>
+                  </li> 
                            </ul>
                         </nav>
                      </div>
@@ -97,12 +106,11 @@ $arregloUsuario=$_SESSION['datos_login'];
 
             <div class="row">
               <div class="col-md-12 mb-5">
+              <br>
                 <div class="float-md-left mb-4"><h2 class="text-black h5">Buscando resultados para <?php echo $_GET['texto'];?></h2></div>
                 <div class="d-flex">
                   <div class="dropdown mr-1 ml-md-auto">
-                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Latest
-                    </button>
+                
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
                     <?php
               $re=$conexion->query("select * from categorias");
@@ -173,10 +181,10 @@ $arregloUsuario=$_SESSION['datos_login'];
               </div>
             </div>
           </div>
-
+            <br>
           <div class="col-md-3 order-1 mb-5 mb-md-0">
             <div class="border p-4 rounded mb-4">
-              <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
+              <h3 class="mb-3 h6 text-uppercase text-black d-block">Categorias</h3>
               <ul class="list-unstyled mb-0">
               <?php
               $re=$conexion->query("select * from categorias");

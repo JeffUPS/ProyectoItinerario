@@ -66,7 +66,7 @@ $arregloUsuario=$_SESSION['datos_login'];
                               <li><a href="admin.php" class="d-block"><?php echo $arregloUsuario['nombre'];?></a></li> 
                               <li>
                     <a href="cartclient.php" class="site-cart">
-                    Ver Carrito
+                    <img src="images/carrito.png" width="40" height="40"/>
                       <?php 
                         if(isset($_SESSION['CARRITO'])){
                           echo count($_SESSION['CARRITO']);

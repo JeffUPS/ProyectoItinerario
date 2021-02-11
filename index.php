@@ -55,11 +55,11 @@ include('database.php');
                         <nav class="main-menu">
                            <ul class="menu-area-main">
                               <li class="active"> <a href="index.php">Inicio</a> </li>
-                              <li> <a href="#">Quienes Somos</a> </li>
+                              <li> <a href="about.php">Quienes Somos</a> </li>
                               <li> <a href="product.php">Productos</a> </li>
                               <li>
                     <a href="cart.php" class="site-cart">
-                    Ver Carrito
+                    <img src="images/carrito.png" width="40" height="40"/>
                       <?php 
                         if(isset($_SESSION['CARRITO'])){
                           echo count($_SESSION['CARRITO']);
@@ -73,7 +73,7 @@ include('database.php');
                   </div>
                </div>
                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-                  <li><a class="buy" href="login.php">Inicio Sesion</a></li>
+                  <li><a class="buy" href="login.php">Sesion</a></li>
                </div>
             </div>
          </div>
@@ -90,7 +90,7 @@ include('database.php');
                      <div class="carousel-caption relative">
                         <h1>Nuestros <br> <strong class="black_bold">Ultimos </strong><br>
                            <strong class="yellow_bold">Productos </strong></h1>
-                        <a  href="#">Ver Mas Productos</a>
+                        <a  href="product.php">Ver Mas Productos</a>
                      </div>
                   </div>
                </div>
@@ -100,7 +100,7 @@ include('database.php');
                      <div class="carousel-caption relative">
                         <h1>Nuestros <br> <strong class="black_bold">Ultimos </strong><br>
                            <strong class="yellow_bold">Productos </strong></h1>
-                        <a  href="#">Ver Mas Productos</a>
+                        <a  href="product.php">Ver Mas Productos</a>
                      </div>
                   </div>
                </div>
@@ -110,7 +110,7 @@ include('database.php');
                      <div class="carousel-caption relative">
                         <h1>Nuestros <br> <strong class="black_bold">Ultimos </strong><br>
                            <strong class="yellow_bold">Productos </strong></h1>
-                        <a  href="#">Ver Mas Productos</a>
+                        <a  href="product.php">Ver Mas Productos</a>
                      </div>
                   </div>
                </div>

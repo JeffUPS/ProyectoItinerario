@@ -58,11 +58,11 @@ $arregloUsuario=$_SESSION['datos_login'];
                            <ul class="menu-area-main">
                               <li> <a href="indexcliente.php">Inicio</a> </li>
                               <li> <a href="#">Quienes Somos</a> </li>
-                              <li> <a href="productclient.php">Productos</a> </li>
+                              <li class="active"> <a href="productclient.php">Productos</a> </li>
                               <li><a href="#" class="d-block"><?php echo $arregloUsuario['nombre'];?></a></li>
                               <li>
                     <a href="cartclient.php" class="site-cart">
-                    Ver Carrito
+                    <img src="images/carrito.png" width="40" height="40"/>
                       <?php 
                         if(isset($_SESSION['CARRITO'])){
                           echo count($_SESSION['CARRITO']);
@@ -120,7 +120,7 @@ $arregloUsuario=$_SESSION['datos_login'];
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                       <div class="block-4 text-center border">
                         <figure class="block-4-image">
-                          <a href="shop-single.php?id=<?php echo $fila['id'];?>">
+                          <a href="shop-singleclient.php?id=<?php echo $fila['id'];?>">
                           <img src="images/<?php echo $fila['imagen'];?>" alt="<?php echo $fila['nombre'];?>" class="img-fluid"></a>
                         </figure>
                         <div class="block-4-text p-4">
@@ -142,21 +142,21 @@ $arregloUsuario=$_SESSION['datos_login'];
                       <?php
                         if(isset($_GET['limite'])){
                           if($_GET['limite']>0){
-                            echo '<li><a href="index.php?limite='.($_GET['limite']-10).'">&lt;</a></li>';
+                            echo '<li><a href="indexcliente.php?limite='.($_GET['limite']-10).'">&lt;</a></li>';
 
                           }
                         }
 
                         for($k=0;$k<$totalBotones;$k++){
-                          echo '<li><a href="index.php?limite='.($k*10).'">'.($k+1).'</a></li>';
+                          echo '<li><a href="indexcliente.php?limite='.($k*10).'">'.($k+1).'</a></li>';
                         }
                         if(isset($_GET['limite'])){
                           if($_GET['limite']+10<$totalBotones*10){
-                            echo '<li><a href="index.php?limite'.($_GET['limite']+10).'">&gt;</a></li>';
+                            echo '<li><a href="indexcliente.php?limite'.($_GET['limite']+10).'">&gt;</a></li>';
                             
                           }
                         }else{
-                          echo '<li><a href="index.php?limite=10">&gt;</a></li>';
+                          echo '<li><a href="indexcliente.php?limite=10">&gt;</a></li>';
                         }
                       ?>
                     

@@ -110,7 +110,7 @@
                               <li><a href="#" class="d-block"><?php echo $arregloUsuario['nombre'];?></a></li>
                               <li>
                     <a href="cartclient.php" class="site-cart">
-                    Ver Carrito
+                    <img src="images/carrito.png" width="40" height="40"/>
                       <?php 
                         if(isset($_SESSION['CARRITO'])){
                           echo count($_SESSION['CARRITO']);
@@ -194,7 +194,7 @@
                     </td>
                     <td class="cant<?php echo $arregloCarrito[$i]['Id']; ?>">
                     $<?php echo $arregloCarrito[$i]['Precio']*$arregloCarrito[$i]['Cantidad']; ?></td>
-                    <td><a href="#" class="btn btn-primary btn-sm btnEliminar" data-id="<?php echo $arregloCarrito[$i]['Id'];?>">BORRAR</a></td>
+                    <td><a href="eliminarCarrito.php" class="buy" data-id="<?php echo $arregloCarrito[$i]['Id'];?>">BORRAR</a></td>
                   </tr>
                   <?php } }?>
  
@@ -254,7 +254,7 @@
         </div>
       </div>
     </div>
-
+<br>
     
   </div>
   <footr>

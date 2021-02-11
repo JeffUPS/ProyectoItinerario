@@ -63,7 +63,16 @@
                               <li> <a href="index.php">Inicio</a> </li>
                               <li> <a href="#">Quienes Somos</a> </li>
                               <li> <a href="#">Productos</a> </li>
-                               
+                              <li>
+                    <a href="cart.php" class="site-cart">
+                    <img src="images/carrito.png" width="40" height="40"/>
+                      <?php 
+                        if(isset($_SESSION['CARRITO'])){
+                          echo count($_SESSION['CARRITO']);
+                        }
+                      ?>
+                    </a>
+                  </li> 
                            </ul>
                         </nav>
                      </div>
@@ -87,7 +96,7 @@
             </div>
         </div>
     </div>
-  
+  <br>
   <div class="site-wrap">
 
     <div class="site-section">
@@ -100,27 +109,14 @@
             <h2 class="text-black"><?php echo $fila[1]; ?></h2>
             <p><?php echo $fila[2]; ?></p>
             <p><strong class="text-primary h4">$<?php echo $fila[3]; ?></strong></p>
-            
-            <!--
-            <div class="mb-5">
-              <div class="input-group mb-3" style="max-width: 120px;">
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-              </div>
-              <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-              <div class="input-group-append">
-                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-              </div>
-            </div>
-
-            </div>-->
-            <p><a href="cart.php?id=<?php echo $fila[0]; ?>" class="buy-now btn btn-sm btn-primary">Añadir a carrito</a></p>
+            <p><a href="cart.php?id=<?php echo $fila[0]; ?>" class="buy">Añadir a carrito</a></p>
 
           </div>
         </div>
       </div>
     </div>
   </div>
+  <br>
   <footr>
          <div class="footer">
             <div class="container">

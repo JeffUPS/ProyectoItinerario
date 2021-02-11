@@ -73,6 +73,16 @@ $arregloUsuario=$_SESSION['datos_login'];
                               <li> <a href="#">Quienes Somos</a> </li>
                               <li> <a href="productclient.php">Productos</a> </li>
                               <li><a href="#" class="d-block"><?php echo $arregloUsuario['nombre'];?></a></li>
+                              <li>
+                    <a href="cartclient.php" class="site-cart">
+                    <img src="images/carrito.png" width="40" height="40"/>
+                      <?php 
+                        if(isset($_SESSION['CARRITO'])){
+                          echo count($_SESSION['CARRITO']);
+                        }
+                      ?>
+                    </a>
+                  </li>
                            </ul>
                         </nav>
                      </div>
@@ -122,7 +132,7 @@ $arregloUsuario=$_SESSION['datos_login'];
             </div>
 
             </div>
-            <p><a href="cartclient.php?id=<?php echo $fila[0]; ?>" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+            <p><a href="cartclient.php?id=<?php echo $fila[0]; ?>" class="buy">Agregar al Carrito</a></p>
 
           </div>
         </div>

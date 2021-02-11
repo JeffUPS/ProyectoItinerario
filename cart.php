@@ -109,7 +109,7 @@
                               <li> <a href="product.php">Productos</a> </li>
                               <li>
                     <a href="cart.php" class="site-cart">
-                    Ver Carrito
+                    <img src="images/carrito.png" width="40" height="40"/>
                       <?php 
                         if(isset($_SESSION['CARRITO'])){
                           echo count($_SESSION['CARRITO']);
@@ -175,25 +175,27 @@
                     <td class="product-name">
                       <h2 class="h5 text-black"><?php echo $arregloCarrito[$i]['Nombre']; ?></h2>
                     </td>
+
                     <td>$<?php echo $arregloCarrito[$i]['Precio']; ?></td>
                     <td>
                       <div class="input-group mb-3" style="max-width: 180px">
                         <div class="input-group-prepend">
-                          <button class="btn btn-outline-primary js-btn-minus btnIncrementar" type="button">&minus;</button>
+                          <button class="buy btnIncrementar" type="button">&minus;</button>
                         </div>
-                        <input type="text" class="form-control text-center txtCantidad" 
+                        <input type="text" class="txtCantidad" 
                         data-precio="<?php echo $arregloCarrito[$i]['Precio']; ?>"
                         data-id="<?php echo $arregloCarrito[$i]['Id']; ?>"
-                        value="<?php echo $arregloCarrito[$i]['Cantidad']; ?>" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        value="<?php echo $arregloCarrito[$i]['Cantidad']; ?>"  aria-describedby="button-addon1">
                         <div class="input-group-append">
-                          <button class="btn btn-outline-primary js-btn-plus btnIncrementar" type="button">&plus;</button>
+                          <button class="buy btnIncrementar" type="button">&plus;</button>
                         </div>
                       </div>
-
                     </td>
+
                     <td class="cant<?php echo $arregloCarrito[$i]['Id']; ?>">
                     $<?php echo $arregloCarrito[$i]['Precio']*$arregloCarrito[$i]['Cantidad']; ?></td>
-                    <td><a href="#" class="btn btn-primary btn-sm btnEliminar" data-id="<?php echo $arregloCarrito[$i]['Id'];?>">BORRAR</a></td>
+                    <td><a href="eliminarCarrito.php" class="buy" data-id="<?php echo $arregloCarrito[$i]['Id'];?>">BORRAR</a></td>
+
                   </tr>
                   <?php } }?>
  
@@ -287,23 +289,9 @@
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    $(document).ready(function(){
-      $(".btnEliminar").click(function(){
-        event.preventDefault();
-        var id= $(this).data('id');
-        var boton=$(this);
-        $.ajax({
-          method:'POST',
-          url:'eliminarCarrito.php',
-          data:{
-            id:id
-          }
 
-        }).done(function(respuesta){
-          boton.parent('td').parent('tr').remove();
-        });
-      });
+  <script>
+  
       $(".txtCantidad").keyup(function(){
         var cantidad=$(this).val();
         var precio=$(this).data('precio');

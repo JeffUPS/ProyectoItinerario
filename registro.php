@@ -55,11 +55,11 @@
                         <nav class="main-menu">
                            <ul class="menu-area-main">
                               <li> <a href="index.php">Inicio</a> </li>
-                              <li> <a href="#">Quienes Somos</a> </li>
+                              <li> <a href="about.php">Quienes Somos</a> </li>
                               <li> <a href="product.php">Productos</a> </li>
                               <li>
                     <a href="cart.php" class="site-cart">
-                    Ver Carrito
+                    <img src="images/carrito.png" width="40" height="40"/>
                       <?php 
                         if(isset($_SESSION['CARRITO'])){
                           echo count($_SESSION['CARRITO']);
@@ -73,7 +73,7 @@
                   </div>
                </div>
                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-                  <li><a class="buy" href="login.php">Inicio de Sesion</a></li>
+                  <li><a class="buy" href="login.php">Sesion</a></li>
                </div>
             </div>
          </div>
@@ -102,16 +102,16 @@
                     <form class="main_form" method="post" action="guardarcliente.php">
                         <div class="row">
                             <div class=" col-md-6">
-                                <input class="form-control" type="text" name="c_fname" id="c_fname" value="<?php echo $nombre; ?>" placeholder="Ingresar su Nombre" >
+                                <input class="form-control" type="text" name="c_fname" id="c_fname" value="<?php echo $nombre; ?>" placeholder="Ingresar su Nombre" required>
                             </div>
                             <div class=" col-md-6">
-                                <input class="form-control" type="text" name="c_phone" id="c_phone"  placeholder="Ingresar su Telefono">
+                                <input class="form-control" type="text" name="c_phone" id="c_phone"  placeholder="Ingresar su Telefono" required minlength="7" maxlength="10">
                             </div>
                             <div class=" col-md-6">
-                                <input class="form-control" type="email" name="c_email_address" id="c_email_address"  placeholder="Ingresar su Correo Electronico" >
+                                <input class="form-control" type="email" name="c_email_address" id="c_email_address"  placeholder="Ingresar su Correo Electronico" required >
                             </div>
                             <div class=" col-md-6">
-                                <input class="form-control" type="password" name="c_account_password" id="c_account_password" placeholder="Ingresar su Contraseña">
+                                <input class="form-control" type="password" name="c_account_password" id="c_account_password" placeholder="Ingresar su Contraseña" required minlength="5" >
                             </div>
                             <div class=" col-md-12">
                                 <button type="submit" class="send" name="reg_user">Registrar</button>
@@ -127,62 +127,25 @@
       <footr>
          <div class="footer">
             <div class="container">
-               <div class="row">
-                  <div class="col-md-6 offset-md-3">
-                     <ul class="sociel">
-                         <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                         <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                         <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                         <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                     </ul>
-                  </div>
-            </div>
+            
             <div class="row">
                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                   <div class="contact">
-                     <h3>conatct us</h3>
-                     <span>123 Second Street Fifth Avenue,<br>
-                       Manhattan, New York
-                        +987 654 3210</span>
+                     <h3>Contactanos</h3>
+                    
                   </div>
                </div>
                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                   <div class="contact">
-                     <h3>ADDITIONAL LINKS</h3>
-                     <ul class="lik">
-                         <li> <a href="#">About us</a></li>
-                         <li> <a href="#">Terms and conditions</a></li>
-                         <li> <a href="#">Privacy policy</a></li>
-                         <li> <a href="#">News</a></li>
-                          <li> <a href="#">Contact us</a></li>
-                     </ul>
-                  </div>
-               </div>
-                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                  <div class="contact">
-                     <h3>service</h3>
+                     <h3>servicios</h3>
                       <ul class="lik">
-                    <li> <a href="#"> Data recovery</a></li>
-                         <li> <a href="#">Computer repair</a></li>
-                         <li> <a href="#">Mobile service</a></li>
-                         <li> <a href="#">Network solutions</a></li>
-                          <li> <a href="#">Technical support</a></li>
-                  </div>
-               </div>
-                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                  <div class="contact">
-                     <h3>IT NEXT THEME</h3>
-                     <span>Tincidunt elit magnis <br>
-                     nulla facilisis. Dolor <br>
-                  sagittis maecenas. <br>
-               Sapien nunc amet <br>
-            ultrices, </span>
+                    
                   </div>
                </div>
             </div>
          </div>
             <div class="copyright">
-               <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free html Templates</a></p>
+               <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free html Templates </a>Redesigned by Misael Cabascango - Dorival Pichamba - Jefferson Yanqui</p>
             </div>
          
       </div>

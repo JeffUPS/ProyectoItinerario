@@ -51,7 +51,17 @@ if(!isset($_GET['texto'])){
                            <ul class="menu-area-main">
                               <li> <a href="index.php">Inicio</a> </li>
                               <li> <a href="#">Quienes Somos</a> </li>
-                              <li> <a href="#">Productos</a> </li>
+                              <li class="active"> <a href="product.php">Productos</a> </li>
+                              <li>
+                    <a href="cart.php" class="site-cart">
+                    <img src="images/carrito.png" width="40" height="40"/>
+                      <?php 
+                        if(isset($_SESSION['CARRITO'])){
+                          echo count($_SESSION['CARRITO']);
+                        }
+                      ?>
+                    </a>
+                  </li>
                                
                            </ul>
                         </nav>
